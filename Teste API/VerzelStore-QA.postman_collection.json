@@ -1,0 +1,1418 @@
+{
+	"info": {
+		"_postman_id": "ba1c1344-dac9-416c-9b8a-55cfbe5749f5",
+		"name": "VerzelStore-QA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19156151",
+		"_collection_link": "https://martian-meadow-915158.postman.co/workspace/Team-Workspace~b4e5eb25-9f58-48b6-8a33-5413048ab83b/collection/19156151-ba1c1344-dac9-416c-9b8a-55cfbe5749f5?action=share&source=collection_link&creator=19156151"
+	},
+	"item": [
+		{
+			"name": "Produtos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-001 ListaProdutos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/produtos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"produtos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-002-ProdutoDuplicado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\"produtoId\": \"P002\", \"quantidade\": 1},\r\n    {\"produtoId\": \"P002\", \"quantidade\": 2}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/produtos/P001",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"produtos",
+								"P001"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-003-PordutoInexistente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\"produtoId\": \"P999\", \"quantidade\": 1}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/produtos/P999",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"produtos",
+								"P999"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Carrinho",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-004-Carrinho",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":1}],\r\n    \"cupom\":\"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-005-Limite",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":6}],\r\n    \"cupom\":\"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-006-quantidadeMax",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":5}]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-007-QuantidadeZero",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":0}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-008-CarrinhoVazio",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":-1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-009-QuantidadeDecimal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":[{\"produtoId\":\"P002\",\"quantidade\":1.5}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Variacao de Cupom",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-017-VariacoesCupomMaiuscula",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"itens\":[{\"produtoId\":\"P005\",\"quantidade\":1}],\"cupom\":\"BEMVINDO10\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.2-VariacoesCupomMinuscula",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"itens\":[{\"produtoId\":\"P005\",\"quantidade\":1}],\"cupom\":\"bemvindo10\"}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular ",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular "
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.4-VariacoesCupomAlternanciaIrregular",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n    ],\"cupom\":\"BemVindo10\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.5-VariacoesCupomEspacosAntes",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n    ],\"cupom\":\" BEMVINDO10\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.6-VariacoesCupomEspacoDepois",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n    ],\"cupom\":\"BEMVINDO10 \"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.7-VariacoesCupomEspacoAntesDepois",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n    ],\"cupom\":\" BEMVINDO10 \"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-017.8-VariacoesCupomEspacosInterno",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n    ],\"cupom\":\"BEM VINDO10\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Cupom e Frete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-018-CupomInvalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-019-CupomExpirado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":1\r\n        }\r\n        \r\n    ],\"cupom\":\"VERAO2026\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-020-FreteAbaixo200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P006\",\"quantidade\":7\r\n        }\r\n    \r\n    ],\r\n    \"cupom\":\"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-021- FreteEm200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\"produtoId\": \"P005\", \"quantidade\": 2}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-022-FreteAcima200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\"produtoId\": \"P002\", \"quantidade\": 1},\r\n    {\"produtoId\": \"P004\", \"quantidade\": 2}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-023-CupomNaoInterfereNoFrete",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"itens\":\r\n    [\r\n        {\r\n            \"produtoId\":\"P005\",\"quantidade\":2\r\n        \r\n        }\r\n    \r\n    ],\r\n    \"cupom\":\"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-024-ConfirmarPedidoValido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\"produtoId\": \"P005\", \"quantidade\": 1}\r\n  ],\r\n  \"cupom\": \"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-025-ValidacaoCarrinhoePedidos",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\"produtoId\": \"P005\", \"quantidade\": 1}\r\n  ],\r\n  \"cupom\": \"BEMVINDO10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"carrinho",
+								"calcular"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Dados dos Clientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\"produtoId\": \"P005\", \"quantidade\": 1}\r\n  ],\r\n  \"cupom\": \"BEMVINDO10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": [
+				{
+					"name": "API-026-NomeIncompleto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				},
+				{
+					"name": "API-027-NomeCompleto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"mariaemail.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				},
+				{
+					"name": "API-028-EmailInvalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"123\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				},
+				{
+					"name": "API-029-AusenciaDados",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				},
+				{
+					"name": "API-030-ValidacaoCEP",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "ErrosHTTP",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "API-031-CupomInvalidoConfirmacaoPedido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ],\r\n  \"cupom\": \"Tester0922\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-032-CupomExpiradoConfirmacaoPedido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ],\r\n  \"cupom\": \"Tester0922\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-033-JSONMalFormado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"itens\": [",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/rotaInexistente",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"rotaInexistente"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "API-034-CupomExpiradoConfirmacaoPedido Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": {\r\n    \"nome\": \"Maria Silva\",\r\n    \"email\": \"maria@exemplo.com\",\r\n    \"cep\": \"01310-100\"\r\n  },\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"P005\",\r\n      \"quantidade\": 1\r\n    }\r\n  ],\r\n  \"cupom\": \"VERAO2026\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://verzel-store.qa-test-verzel-store.workers.dev/api/rota-inexistente",
+							"protocol": "https",
+							"host": [
+								"verzel-store",
+								"qa-test-verzel-store",
+								"workers",
+								"dev"
+							],
+							"path": [
+								"api",
+								"rota-inexistente"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
